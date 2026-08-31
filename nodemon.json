@@ -1,0 +1,6 @@
+{
+  "//": "nodemon's default watch list only covers .js/.mjs/.json files, so editing .env (e.g. switching STORAGE_DRIVER) silently had no effect until the process was manually restarted — env vars are only read once, at boot, by require('dotenv').config() in server.js. Explicitly listing .env here fixes that: nodemon now restarts the server whenever it changes.",
+  "watch": ["server.js", "config", "controllers", "middleware", "models", "routes", "services", "utils", ".env"],
+  "ext": "js,json,env",
+  "ignore": ["uploads/*", "node_modules"]
+}
