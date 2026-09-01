@@ -1,0 +1,38 @@
+{
+  "name": "edugrowth-os-backend",
+  "version": "1.0.0",
+  "description": "EduGrowth OS - Admin API (Tenant & User, Course & Content, Classroom & Engagement - MVP slice)",
+  "main": "server.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node utils/seed.js",
+    "reset-admin-password": "node utils/resetAdminPassword.js",
+    "invite-admin": "node utils/inviteAdmin.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1123.0",
+    "@aws-sdk/s3-request-presigner": "^3.1123.0",
+    "@sendgrid/mail": "^8.1.6",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.4",
+    "ms": "^2.1.3",
+    "multer": "^2.3.0",
+    "multer-s3": "^3.0.1",
+    "socket.io": "^4.8.3"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^11.2.0",
+    "nodemon": "^3.1.14"
+  }
+}
