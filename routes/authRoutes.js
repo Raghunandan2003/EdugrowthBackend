@@ -10,8 +10,11 @@ const {
   uploadAvatar,
   uploadCover,
   changePassword,
+<<<<<<< HEAD
   requestInviteOtp,
   setPasswordFromInvite,
+=======
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac
 } = require("../controllers/authController");
 
 const router = express.Router();
@@ -27,6 +30,7 @@ const loginLimiter = rateLimit({
   message: { error: { message: "Too many login attempts. Please try again later." } },
 });
 
+<<<<<<< HEAD
 // Same tighter ceiling as the mentor/student OTP endpoints — guards a
 // 6-digit code, so needs its own limit separate from login attempts.
 const otpLimiter = rateLimit({
@@ -39,6 +43,8 @@ const otpLimiter = rateLimit({
 
 router.post("/invite/request-otp", otpLimiter, requestInviteOtp);
 router.post("/invite/set-password", otpLimiter, setPasswordFromInvite);
+=======
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac
 router.post("/login", loginLimiter, login);
 router.post("/logout", logout);
 router.get("/me", protect, getMe);

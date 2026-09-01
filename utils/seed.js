@@ -45,6 +45,7 @@ function resolveSeedAdminPassword() {
   return { password, generated: true };
 }
 
+<<<<<<< HEAD
 // Refuses to run against a database that already has real data unless
 // --force is passed. Without this, `npm run seed` silently deletes every
 // mentor/course/student/schedule/recording on every run — fine on a
@@ -77,6 +78,10 @@ async function assertSafeToWipe() {
 async function seed() {
   await connectDB();
   await assertSafeToWipe();
+=======
+async function seed() {
+  await connectDB();
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac
 
   await Promise.all([
     Admin.deleteMany({}),

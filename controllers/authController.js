@@ -5,11 +5,14 @@ const { setAuthCookie, clearAuthCookie } = require("../utils/cookie");
 const { deleteUploadedFile } = require("../middleware/upload");
 const { STORAGE_DRIVER, AVATAR_PREFIX } = require("../services/storageService");
 const asyncHandler = require("../middleware/asyncHandler");
+<<<<<<< HEAD
 const { generateOtp, hashOtp, compareOtp, hashToken } = require("../utils/otp");
 const { sendAdminOtpEmail } = require("../utils/email");
 
 const OTP_TTL_MS = 10 * 60 * 1000; // 10 minutes
 const MAX_OTP_ATTEMPTS = 5;
+=======
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac
 
 // req.file's shape differs by multer storage engine: multer.diskStorage
 // (local mode) gives back `filename`; multer-s3 (S3 mode) gives back
@@ -36,6 +39,7 @@ const login = asyncHandler(async function login(req, res) {
     return res.status(400).json({ error: { message: "Email and password are required" } });
   }
 
+<<<<<<< HEAD
   const admin = await Admin.findOne({ email: String(email).toLowerCase() }).select("+passwordHash");
   if (!admin || !admin.passwordHash) {
     return res.status(401).json({ error: { message: "Invalid email or password" } });
@@ -45,6 +49,12 @@ const login = asyncHandler(async function login(req, res) {
       error: { message: "Your account is not active yet. Check your email for the invite link." },
     });
   }
+=======
+  const admin = await Admin.findOne({ email: String(email).toLowerCase() });
+  if (!admin) {
+    return res.status(401).json({ error: { message: "Invalid email or password" } });
+  }
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac
 
   const match = await bcrypt.compare(password, admin.passwordHash);
   if (!match) {
@@ -162,7 +172,11 @@ const changePassword = asyncHandler(async function changePassword(req, res) {
     return res.status(400).json({ error: { message: "New password must be at least 8 characters" } });
   }
 
+<<<<<<< HEAD
   const admin = await Admin.findById(req.admin.id).select("+passwordHash");
+=======
+  const admin = await Admin.findById(req.admin.id);
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac
   const match = await bcrypt.compare(currentPassword, admin.passwordHash);
   if (!match) {
     return res.status(401).json({ error: { message: "Current password is incorrect" } });
@@ -176,6 +190,7 @@ const changePassword = asyncHandler(async function changePassword(req, res) {
 function sanitize(admin) {
   const obj = admin.toObject ? admin.toObject() : admin;
   delete obj.passwordHash;
+<<<<<<< HEAD
   delete obj.inviteTokenHash;
   delete obj.inviteTokenExpires;
   delete obj.otpHash;
@@ -287,3 +302,9 @@ module.exports = {
   requestInviteOtp,
   setPasswordFromInvite,
 };
+=======
+  return obj;
+}
+
+module.exports = { login, logout, getMe, updateProfile, uploadAvatar, uploadCover, changePassword };
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac

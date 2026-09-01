@@ -112,6 +112,7 @@ function sendMentorOtpEmail({ to, name, otp }) {
   return sendMail({ to, subject, html, text });
 }
 
+<<<<<<< HEAD
 // Always sent as an admin invite — this script is the only way an admin
 // invite/reset link goes out, so there's no separate "isReset" case like
 // the mentor version has (mentorController.js also exposes an in-app
@@ -147,6 +148,8 @@ function sendAdminOtpEmail({ to, name, otp }) {
   return sendMail({ to, subject, html, text });
 }
 
+=======
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac
 function sendStudentInviteEmail({ to, name, setPasswordUrl, courseTitle }) {
   const subject = "Your EduGrowth OS student portal is ready";
   const courseLine = courseTitle ? ` for ${courseTitle}` : "";
@@ -291,8 +294,11 @@ function escapeHtml(str) {
 
 module.exports = {
   sendMail,
+<<<<<<< HEAD
   sendAdminInviteEmail,
   sendAdminOtpEmail,
+=======
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac
   sendMentorInviteEmail,
   sendMentorOtpEmail,
   sendStudentInviteEmail,

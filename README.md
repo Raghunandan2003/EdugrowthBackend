@@ -18,6 +18,7 @@ Default login after seeding:
 - **Email:** admin@brightprep.edu
 - **Password:** admin123
 
+<<<<<<< HEAD
 ## Adding another admin (invite by email → OTP → set password)
 
 `npm run seed` and `npm run reset-admin-password` both create an admin
@@ -46,6 +47,8 @@ current password, if they have one, keeps working until they finish this
 flow). If SendGrid isn't configured, the link is printed to the console
 instead of emailed, same fallback as every other invite in this app.
 
+=======
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac
 ## API
 
 Auth uses an **httpOnly cookie** set on login — the browser sends it automatically,
@@ -84,8 +87,11 @@ the two.
 | POST | /api/recorded-sessions | Add recorded session `{ title, course, videoUrl, date, notes? }` |
 | DELETE | /api/recorded-sessions/:id | Remove recorded session |
 | POST | /api/mentors/:id/resend-invite | Re-issue and re-send a mentor's set-password invite (only while still "invited") |
+<<<<<<< HEAD
 | POST | /api/auth/invite/request-otp | `{ token }` — validates an admin invite link (from `npm run invite-admin`), emails a fresh OTP |
 | POST | /api/auth/invite/set-password | `{ token, otp, password }` — verifies the OTP, sets the invited admin's password, activates them, logs them in |
+=======
+>>>>>>> 0c81c9b1068e0cf2a99e7c0a92e1d34d440490ac
 
 ### Mentor portal (separate session, `eg_mentor_token` cookie)
 
